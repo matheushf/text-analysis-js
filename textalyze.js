@@ -49,11 +49,16 @@ function sanitize(string = '') {
   return string.toLowerCase();
 }
 
+/**
+ * Takes an string containing the path to a file and returns the data
+ * @param {String} path to the file
+ * @returns {String} file data
+ */
 function readFromFile(file) {
   return new Promise((resolve) => {
     fs.readFile(file, (err, data) => {
       if (err) throw err;
-      resolve(data.toString());
+      resolve(data;
     });
   });
 }

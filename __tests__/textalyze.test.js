@@ -1,4 +1,4 @@
-const { itemCounts } = require('../textalyze');
+const { itemCounts, stringCharsToArray } = require('../textalyze');
 
 describe('itemCount', () => {
   test('returns a count of the strings in the array', () => {
@@ -34,5 +34,22 @@ describe('itemCount', () => {
     const expectedOutput = new Map([['a', 2], ['A', 2]]);
 
     expect(itemCounts(input)).toEqual(expectedOutput);
+  });
+});
+
+describe('stringCharsToArray', () => {
+  test('returns an Map of chars', () => {
+    const input = 'car';
+    const expectedOutput = new Map([['c', 1], ['a', 1], ['r', 1]]);
+
+    expect(stringCharsToArray(input)).toEqual(expectedOutput);
+  });
+
+
+  test('returns an empty map when string is empty', () => {
+    const input = '';
+    const expectedOutput = new Map();
+
+    expect(stringCharsToArray(input)).toEqual(expectedOutput);
   });
 });

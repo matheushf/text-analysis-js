@@ -1,4 +1,6 @@
-const { itemCounts, stringCharsToArray, sanitize } = require('../textalyze');
+const {
+  itemCounts, stringCharsToArray, sanitize, readFromFile,
+} = require('../textalyze');
 
 describe('itemCount', () => {
   test('returns a count of the strings in the array', () => {
@@ -64,5 +66,21 @@ describe('sanitize', () => {
 
   test('returns empty if string empty', () => {
     expect(sanitize('')).toEqual('');
+  });
+});
+
+
+describe('readFromFile', () => {
+  test('returns the rigth string from the file', async () => {
+    const expectedOutput = 'test';
+    const output = await readFromFile('sample_data/test.txt');
+
+    expect(output).toEqual(expectedOutput);
+  });
+
+  test('throws error if file not found', async () => {
+    await expect(
+      readFromFile('404.txt'),
+    ).rejects.toThrow();
   });
 });

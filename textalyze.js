@@ -55,10 +55,12 @@ function sanitize(string = '') {
  * @returns {String} file data
  */
 function readFromFile(file) {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     fs.readFile(file, (err, data) => {
-      if (err) throw err;
-      resolve(data;
+      if (err) {
+        return reject(new Error(err));
+      }
+      return resolve(data.toString());
     });
   });
 }

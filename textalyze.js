@@ -25,9 +25,6 @@ function itemCounts(array) {
 
   return counts;
 }
-const array = ['car', 'house', 'car', 'b', 'c', 'd', 'c'];
-result = itemCounts(array);
-console.log(result);
 
 /**
  * Takes an arbitrary String as input
@@ -49,8 +46,5 @@ function stringCharsToArray(string) {
 function sanitize(string = '') {
   return string.toLowerCase();
 }
-result = sanitize('HEY: ThIs Is hArD tO rEaD!');
-console.log(result);
-
 
 module.exports = { itemCounts, stringCharsToArray, sanitize };

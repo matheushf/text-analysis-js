@@ -48,9 +48,11 @@ function sanitize(string) {
 }
 
 function readFromFile(file) {
-  fs.readFile(file, (err, data) => {
-    if (err) throw err;
-    return data.toString();
+  return new Promise((resolve) => {
+    fs.readFile(file, (err, data) => {
+      if (err) throw err;
+      resolve(data.toString());
+    });
   });
 }
 

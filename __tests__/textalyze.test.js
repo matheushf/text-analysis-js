@@ -69,7 +69,6 @@ describe('sanitize', () => {
   });
 });
 
-
 describe('readFromFile', () => {
   test('returns the rigth string from the file', async () => {
     const expectedOutput = 'test';
@@ -84,3 +83,4 @@ describe('readFromFile', () => {
     ).rejects.toThrow();
   });
 });
+

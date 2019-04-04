@@ -30,11 +30,12 @@ function itemCounts(array) {
 }
 
 /**
- * Takes an arbitrary String as input and returns an Array of all the characters in the string
- * @param {String}
- * @returns {Array}
+ * Takes an arbitrary String as input
+ * and returns an Array with the counting of all the characters in the string
+ * @param {String} arbitrary string
+ * @returns {Array} a Map with the counting of each char
  */
-function stringCharsToArray(string = '') {
+function stringCharsToArray(string) {
   const arrayString = string.split('');
   return itemCounts(arrayString);
 }

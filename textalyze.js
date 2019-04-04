@@ -83,6 +83,24 @@ function frequencyStatics(array) {
   return statistics;
 }
 
+function histogram(array) {
+  const statistics = frequencyStatics(array);
+  let histogramOutput = '';
+
+  let biggestStringLength = 0;
+  statistics.forEach((value, key) => {
+    biggestStringLength = key.length > biggestStringLength ? key.length : biggestStringLength;
+  });
+
+  statistics.forEach((value, index) => {
+    const bar = '='.repeat(value);
+    const line = `${index.padEnd(biggestStringLength)} [${value.toFixed(2)}%] ${bar} \n`;
+    histogramOutput += line;
+  });
+
+  return histogramOutput;
+}
+
 module.exports = {
-  itemCounts, stringCharsToArray, sanitize, readFromFile, frequencyStatics,
+  itemCounts, stringCharsToArray, sanitize, readFromFile, frequencyStatics, histogram,
 };

@@ -1,5 +1,5 @@
 const {
-  itemCounts, stringCharsToArray, sanitize, readFromFile, frequencyStatics,
+  itemCounts, stringCharsToArray, sanitize, readFromFile, frequencyStatics, histogram,
 } = require('../textalyze');
 
 describe('itemCount', () => {
@@ -97,5 +97,21 @@ describe('frequencyStatics', () => {
     const expectedOutput = new Map();
 
     expect(frequencyStatics(input)).toEqual(expectedOutput);
+  });
+});
+
+describe('histogram', () => {
+  test('expect histogram to be mounted with right text ', () => {
+    const input = ['a', 'b'];
+    let expectedOutput = `a [50.00%] ${'='.repeat(50)} \n`;
+    expectedOutput += `b [50.00%] ${'='.repeat(50)} \n`;
+
+    expect(histogram(input)).toEqual(expectedOutput);
+  });
+
+  test('returns an empty string when array is empty', () => {
+    const input = [];
+
+    expect(histogram(input)).toEqual('');
   });
 });

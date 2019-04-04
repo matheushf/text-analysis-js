@@ -1,5 +1,5 @@
 const {
-  itemCounts, stringCharsToArray, sanitize, readFromFile,
+  itemCounts, stringCharsToArray, sanitize, readFromFile, frequencyStatics,
 } = require('../textalyze');
 
 describe('itemCount', () => {
@@ -84,3 +84,18 @@ describe('readFromFile', () => {
   });
 });
 
+describe('frequencyStatics', () => {
+  test('expect to receive the right overall frequencies', () => {
+    const input = ['a', 'b'];
+    const expectedOutput = new Map([['a', 50], ['b', 50]]);
+
+    expect(frequencyStatics(input)).toEqual(expectedOutput);
+  });
+
+  test('returns an empty map when array is empty', () => {
+    const input = [];
+    const expectedOutput = new Map();
+
+    expect(frequencyStatics(input)).toEqual(expectedOutput);
+  });
+});

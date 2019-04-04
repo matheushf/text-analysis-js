@@ -1,4 +1,7 @@
+const fs = require('fs');
+
 let result;
+
 /**
  * This is the base code for v0.1 of our JavaScript text analyzer.
  * Visit https://github.com/jfarmer/text-analysis to see what to do.
@@ -47,4 +50,22 @@ function sanitize(string = '') {
   return string.toLowerCase();
 }
 
-module.exports = { itemCounts, stringCharsToArray, sanitize };
+/**
+ * Takes an string containing the path to a file and returns the data
+ * @param {String} path to the file
+ * @returns {String} file data
+ */
+function readFromFile(file) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(file, (err, data) => {
+      if (err) {
+        return reject(new Error(err));
+      }
+      return resolve(data.toString());
+    });
+  });
+}
+
+module.exports = {
+  itemCounts, stringCharsToArray, sanitize, readFromFile,
+};

@@ -1,4 +1,4 @@
-const { itemCounts, stringCharsToArray } = require('../textalyze');
+const { itemCounts, stringCharsToArray, sanitize } = require('../textalyze');
 
 describe('itemCount', () => {
   test('returns a count of the strings in the array', () => {
@@ -51,5 +51,18 @@ describe('stringCharsToArray', () => {
     const expectedOutput = new Map();
 
     expect(stringCharsToArray(input)).toEqual(expectedOutput);
+  });
+});
+
+describe('sanitize', () => {
+  test('returns a sanitized string', () => {
+    const input = 'HEY: ThIs Is hArD tO rEaD!';
+    const expectedOutput = 'hey: this is hard to read!';
+
+    expect(sanitize(input)).toEqual(expectedOutput);
+  });
+
+  test('returns empty if string empty', () => {
+    expect(sanitize('')).toEqual('');
   });
 });

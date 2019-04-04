@@ -25,9 +25,6 @@ function itemCounts(array) {
 
   return counts;
 }
-const array = ['car', 'house', 'car', 'b', 'c', 'd', 'c'];
-result = itemCounts(array);
-console.log(result);
 
 /**
  * Takes an arbitrary String as input
@@ -40,4 +37,14 @@ function stringCharsToArray(string) {
   return itemCounts(arrayString);
 }
 
-module.exports = { itemCounts, stringCharsToArray };
+/**
+ * Takes an arbitrary String as input and returns a "sanitized" string
+ * that replaces all upper-case letters with their lower-case equivalent
+ * @param {String}
+ * @returns {Array}
+ */
+function sanitize(string = '') {
+  return string.toLowerCase();
+}
+
+module.exports = { itemCounts, stringCharsToArray, sanitize };
